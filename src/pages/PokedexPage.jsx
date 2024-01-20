@@ -8,20 +8,20 @@ import SelectType from "../components/PokedexPage/SelectType"
 const PokedexPage = () => {
 
   const [inputValue, setInputValue] = useState('')
-  const [typeSelect, setTypeSelect] = useState('allPokemons')
+  const [typeSelected, setTypeSelect] = useState('allPokemons')
 
   const trainerName = useSelector( states => states.trainer )
 
   const url = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0'
-  const [ pokemons, getPokemons ] = useFetch(url)
+  const [ pokemons, getPokemons, getTypePokemon ] = useFetch(url)
 
   useEffect(() => {
-    if(typeSelect === 'allPokemons'){
+    if(typeSelected === 'allPokemons'){
       getPokemons()
     } else {
-      getTypePokemon(typeSelect)
+      getTypePokemon(typeSelected)
     }
-  }, [typeSelect])
+  }, [typeSelected])
   
   
   
