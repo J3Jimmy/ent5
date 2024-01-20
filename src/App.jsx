@@ -17,7 +17,6 @@ function App() {
       <Route path='/pokedex/:id' element={<PokemonPage />} />
     </Route>
     </Routes>
-    <h1>pokedex</h1>
    </div>
   )
 }
