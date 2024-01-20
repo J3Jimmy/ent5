@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import PokeCard from "../components/PokedexPage/PokeCard"
 import useFetch from "../hooks/useFetch"
+import SelectType from "../components/PokedexPage/SelectType"
 
 
 const PokedexPage = () => {
 
-  const [inputValue, setinputValue] = useState('')
+  const [inputValue, setInputValue] = useState('')
+  const [typeSelect, setTypeSelect] = useState('allPokemons')
 
   const trainerName = useSelector( states => states.trainer )
 
@@ -14,8 +16,13 @@ const PokedexPage = () => {
   const [ pokemons, getPokemons ] = useFetch(url)
 
   useEffect(() => {
+      if(typeSelected === 'allPokemons'){
     getPokemons()
-  },[])
+  }else {
+      getTypePokemon(typeSelected)
+    }
+  
+  },[typeSelected])
   
 
     const inputName = useRef()
@@ -34,6 +41,7 @@ const PokedexPage = () => {
         <input ref={inputName} type="text" />
         <button>Search</button>
       </form>
+      <SelectType setTypeSelect={setTypeSelect} />
       <div>
       {
         pokemons?.results.filter(cbFilter).map( pokeInfo => (

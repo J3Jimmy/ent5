@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import './styles/PokeCard.css'
 
 const PokeCard = ({ url }) => {
   const [pokemon, getPokemon] = useFetch(url);
@@ -16,27 +17,28 @@ const PokeCard = ({ url }) => {
   }
 
  return (
-    <div onClick={handleNavigatePokemon}>
-      <article>
-        <header>
+    <div className={`pokecard__border ${pokemon?.types[0].type.name}`}  onClick={handleNavigatePokemon}>
+      <article className="pokecard">
+        <header className="pokecard__header">
           <img
+            className="pokecard__img"
             src={pokemon?.sprites.other["official-artwork"].front_default}
             alt=""
           />
         </header>
-        <section>
-          <h3>{pokemon?.name}</h3>
-          <ul>
+        <section className="pokecard__body">
+          <h3 className="pokecard__name">{pokemon?.name}</h3>
+          <ul className="pokecard__types">
             {pokemon?.types.map((typeiInfo) => (
-              <li key={typeiInfo.type.url}>{typeiInfo.type.name}</li>
+              <li className="pokecard__types__item" key={typeiInfo.type.url}>{typeiInfo.type.name}</li>
             ))}
           </ul>
-          <hr />
-          <ul>
+          <hr className="pokecard__hr" />
+          <ul className="pokecard__stats">
             {pokemon?.stats.map((statInfo) => (
-              <li key={statInfo.stat.url}>
-                <span>{statInfo.stat.name}</span>
-                <span>{statInfo.base_stat}</span>
+              <li className="pokecard__stats__item" key={statInfo.stat.url}>
+                <span className="pokecard__stats__label">{statInfo.stat.name}</span>
+                <span className="pokecard__stats__value">{statInfo.base_stat}</span>
               </li>
             ))}
           </ul>
