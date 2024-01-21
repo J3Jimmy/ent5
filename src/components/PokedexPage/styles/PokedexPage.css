@@ -1,11 +1,99 @@
 .pokemons__pokedex {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px; /* Espacio entre las tarjetas */
+  grid-gap: 20px;
   padding-left: 1em;
   padding-top: 2em;
 }
 
 .pokemons__pokedex > * {
-  width: 95%; /* Asegúrate de que cada tarjeta ocupe todo el ancho de su contenedor */
+  width: 95%;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+
+.pagination li {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.pagination li:hover {
+  color: red;
+}
+
+.previous, .next {
+  margin: 0 10px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.previous:hover, .next:hover {
+  background-color: #45a049;
+}
+
+.active, .page-number {
+  font-size: 16px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.active:hover, .page-number:hover {
+  color: red;
+}
+
+.active {
+  font-weight: bold;
+  color: blue;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.container__pokedex {
+  text-align: center;
+}
+
+.hi__pokedex {
+  font-family: Arial, sans-serif;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  margin-top: 1em;
+}
+
+.input__pokedex {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 0.6em;
+  font-size: 18px;
+}
+
+.button__pokedex {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.7; 
+  padding: 10px 20px; 
+}
+
+.button__pokedex:hover {
+  background-color: #45a049;
 }

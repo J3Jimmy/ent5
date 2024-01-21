@@ -4,12 +4,14 @@ import PokeCard from "../components/PokedexPage/PokeCard"
 import useFetch from "../hooks/useFetch"
 import SelectType from "../components/PokedexPage/SelectType"
 import "../components/PokedexPage/styles/PokedexPage.css"
-
+import ReactPaginate from 'react-paginate';
 
 const PokedexPage = () => {
 
   const [inputValue, setInputValue] = useState('')
   const [typeSelected, setTypeSelect] = useState('allPokemons')
+  const [pageNumber, setPageNumber] = useState(0);
+  const pokemonsPerPage = 24;
 
   const trainerName = useSelector( states => states.trainer )
 
@@ -23,18 +25,25 @@ const PokedexPage = () => {
       getTypePokemon(typeSelected)
     }
   }, [typeSelected])
-  
-  
-  
 
-    const inputName = useRef()
+  const inputName = useRef()
 
-    const handleSearch = e => {
-      e.preventDefault()
-      setInputValue(inputName.current.value.trim().toLowerCase())
-    }
+  const handleSearch = e => {
+    e.preventDefault()
+    setInputValue(inputName.current.value.trim().toLowerCase())
+    setPageNumber(0); // Reset page number when performing a new search
+  }
 
-    const cbFilter = (pokeInfo) => pokeInfo.name.toLowerCase().includes(inputValue)
+  const cbFilter = (pokeInfo) => pokeInfo.name.toLowerCase().includes(inputValue)
+
+  const filteredPokemons = pokemons?.results.filter(cbFilter);
+  const pageCount = Math.ceil(filteredPokemons.length / pokemonsPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
+  const visiblePokemons = filteredPokemons.slice(pageNumber * pokemonsPerPage, (pageNumber + 1) * pokemonsPerPage);
 
   return (
     <div className="container__pokedex">
@@ -45,15 +54,26 @@ const PokedexPage = () => {
       </form>
       <SelectType  setTypeSelect={setTypeSelect} />
       <div className="pokemons__pokedex">
-      {
-        pokemons?.results.filter(cbFilter).map( pokeInfo => (
-          <PokeCard
-            key={pokeInfo.url}
-            url={pokeInfo.url}
-           />
-        ) )
-      }
-    </div>
+        {
+          visiblePokemons.map( pokeInfo => (
+            <PokeCard
+              key={pokeInfo.url}
+              url={pokeInfo.url}
+             />
+          ) )
+        }
+      </div>
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"pagination"}
+        previousLinkClassName={"previous"}
+        nextLinkClassName={"next"}
+        disabledClassName={"disabled"}
+        activeClassName={"active"}
+      />
     </div>
   )
 }
