@@ -31,19 +31,15 @@ const PokedexPage = () => {
   const handleSearch = e => {
     e.preventDefault()
     setInputValue(inputName.current.value.trim().toLowerCase())
-    setPageNumber(0); // Reset page number when performing a new search
   }
 
   const cbFilter = (pokeInfo) => pokeInfo.name.toLowerCase().includes(inputValue)
 
-  const filteredPokemons = pokemons?.results.filter(cbFilter);
-  const pageCount = Math.ceil(filteredPokemons.length / pokemonsPerPage);
+  const pageCount = Math.ceil(pokemons?.results.length / pokemonsPerPage);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-
-  const visiblePokemons = filteredPokemons.slice(pageNumber * pokemonsPerPage, (pageNumber + 1) * pokemonsPerPage);
 
   return (
     <div className="container__pokedex">
@@ -55,12 +51,15 @@ const PokedexPage = () => {
       <SelectType  setTypeSelect={setTypeSelect} />
       <div className="pokemons__pokedex">
         {
-          visiblePokemons.map( pokeInfo => (
-            <PokeCard
-              key={pokeInfo.url}
-              url={pokeInfo.url}
-             />
-          ) )
+          pokemons?.results
+            .filter(cbFilter)
+            .slice(pageNumber * pokemonsPerPage, (pageNumber + 1) * pokemonsPerPage)
+            .map( pokeInfo => (
+              <PokeCard
+                key={pokeInfo.url}
+                url={pokeInfo.url}
+               />
+            ) )
         }
       </div>
       <ReactPaginate
