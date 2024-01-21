@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import PokeCard from "../components/PokedexPage/PokeCard"
 import useFetch from "../hooks/useFetch"
 import SelectType from "../components/PokedexPage/SelectType"
+import "../components/PokedexPage/styles/PokedexPage.css"
 
 
 const PokedexPage = () => {
@@ -36,14 +37,14 @@ const PokedexPage = () => {
     const cbFilter = (pokeInfo) => pokeInfo.name.toLowerCase().includes(inputValue)
 
   return (
-    <div>
-      <h2>Hi <span>{trainerName}</span>, Here you can find  yout favorite pokemon</h2>
-      <form onSubmit={handleSearch}>
-        <input ref={inputName} type="text" />
-        <button>Search</button>
+    <div className="container__pokedex">
+      <h2 className="hi__pokedex">Hi <span>{trainerName}</span>, Here you can find  yout favorite pokemon</h2>
+      <form className="submit__pokedex" onSubmit={handleSearch}>
+        <input className="input__pokedex" ref={inputName} type="text" />
+        <button className="button__pokedex">Search</button>
       </form>
-      <SelectType setTypeSelect={setTypeSelect} />
-      <div>
+      <SelectType  setTypeSelect={setTypeSelect} />
+      <div className="pokemons__pokedex">
       {
         pokemons?.results.filter(cbFilter).map( pokeInfo => (
           <PokeCard

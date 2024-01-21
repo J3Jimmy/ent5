@@ -1,0 +1,31 @@
+.container__Home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center; /* Para centrar el texto horizontalmente */
+  row-gap: 10px;
+}
+
+.container__Home input[type="text"] {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+.container__Home button {
+  padding: 10px 20px;
+  background-color: #64a766;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
