@@ -26,6 +26,8 @@ const PokedexPage = () => {
     }
   }, [typeSelected])
 
+ 
+
   const inputName = useRef()
 
   const handleSearch = e => {
