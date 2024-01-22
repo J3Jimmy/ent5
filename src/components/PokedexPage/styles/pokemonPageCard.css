@@ -13,6 +13,13 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+.poke__page__header {
+  aspect-ratio: 2;
+  position: relative;
+  background: var(--header-gradient);
+  background-size: 100% 60%; /* Modificado para ocupar solo la mitad del alto */
+}
+
 
 .pokemon__image__page {
   width: 50%;
@@ -21,10 +28,11 @@
   margin: 0 auto;
   margin-top: 1em;
 }
+
 .id__button {
   font-size: 18px;
   padding: 10px 20px;
-  background-color: #299ec5;
+  background-color: var(--color);
   color: white;
   border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -74,7 +82,7 @@
   margin-right: 10px;
   margin-bottom: 10px;
   padding: 10px 20px;
-  background-color: #008CBA;
+  background-color: var(--color);
   color: white;
   border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -106,7 +114,7 @@ margin-top: 1em;
 }
 
 .pokecard__stats li {
-  margin-bottom: 10px; /
+  margin-bottom: 10px; 
 }
 
 .pokecard__stats progress {
@@ -140,7 +148,7 @@ margin-top: 1em;
   margin-right: 10px;
   margin-bottom: 10px;
   padding: 10px 20px;
-  background-color: #299ec5;
+  background-color: var(--color);
   color: white;
   border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
