@@ -1,11 +1,33 @@
 .pokemons__pokedex {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px; /* Espacio entre las tarjetas */
-  padding-left: 1em;
-  padding-top: 2em;
+  padding: 2em;
 }
 
 .pokemons__pokedex > * {
-  width: 95%; /* Asegúrate de que cada tarjeta ocupe todo el ancho de su contenedor */
+  width: 100%; /* Asegúrate de que cada tarjeta ocupe todo el ancho de su contenedor */
+}
+
+@media (min-width: 768px) {
+  .pokemons__pokedex {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pokemons__pokedex {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 1em;
+}
+
+.page-number {
+  margin: 0 5px;
+  cursor: pointer;
 }
