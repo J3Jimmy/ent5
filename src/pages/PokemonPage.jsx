@@ -21,7 +21,7 @@ const PokemonPage = () => {
         
         <div className="img__header">
         
-          <img src="/src/assets/pokemon__header.png" alt="" />
+          <img src="/src/assets/pokemon__header.png" alt="" className="logo__header"/>
           <img
             src={pokemon?.sprites.other["official-artwork"].front_default}
             alt=""

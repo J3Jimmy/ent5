@@ -21,6 +21,13 @@
   background-size: 100% 60%; 
 }
 
+.img__header {
+  position: relative;
+}
+
+.logo__header {
+  position: relative;
+}
 
 .pokemon__image__page {
   width: 50%;
