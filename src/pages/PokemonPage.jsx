@@ -16,6 +16,7 @@ const PokemonPage = () => {
   
 
   return (
+    <div className="container__poke__card">
     <div className="pokemon__page__card"> 
       <img src="/src/assets/pokemon__header.png" alt="" />
       <img src={pokemon?.sprites.other["official-artwork"].front_default} alt="" className="pokemon__image__page" />
@@ -28,7 +29,7 @@ const PokemonPage = () => {
       <div className="TandH">
         <div className="column_tandh">
         <h3 className="types__habilities">Types:</h3>
-      <ul>
+      <ul className="t__h__">
       {pokemon?.types.map((type, index) => (
         <li key={index}>{type.type.name}</li>
       ))}
@@ -36,7 +37,7 @@ const PokemonPage = () => {
   </div>
   <div className="column">
     <h3 className="types__habilities">Abilities:</h3>
-    <ul>
+    <ul className="t__h__">
       {pokemon?.abilities.map((ability, index) => (
         <li key={index}>{ability.ability.name}</li>
       ))}
@@ -56,6 +57,7 @@ const PokemonPage = () => {
           <li key={index}>{move.move.name}</li>
         ))}
       </ul>
+    </div>
     </div>
   )
 }

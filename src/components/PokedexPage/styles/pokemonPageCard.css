@@ -1,27 +1,37 @@
+.container__poke__card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 160vh
+}
+
 .pokemon__page__card {
-  width: 90%;
-  margin: 0 auto; /* Centra la tarjeta horizontalmente */
-  border: 1px solid #ccc; /* Agrega un borde para que se vea como una tarjeta */
-  padding: 20px; /* Añade un poco de espacio alrededor del contenido */
+  text-align: center;
+  max-width: 900px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .pokemon__image__page {
-  width: 60%;
+  width: 50%;
   height: auto;
   display: block;
   margin: 0 auto;
+  margin-top: 1em;
 }
 .center__page {
   text-align: center; 
 }
 .row__wh {
-  display: flex; /* Utiliza flexbox para alinear los elementos en una fila */
-  justify-content: center; /* Centra los elementos horizontalmente */
-  align-items: center; /* Centra los elementos verticalmente */
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
 }
 
 .weight__height {
-  margin: 0 10px; /* Añade un poco de espacio entre los elementos */
+  margin: 0 10px; 
 }
 .TandH {
   display: flex;
@@ -33,3 +43,18 @@
   margin: 0 20px;
 }
 
+.types__habilities {
+  padding-top: 1em;
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.t__h__ li {
+  background-color: #f2f2f2;
+  padding: 1px 10px;
+ 
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 5px;
+}
