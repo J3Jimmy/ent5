@@ -18,13 +18,15 @@ const PokedexPage = () => {
   const [pokemons, getPokemons, getTypePokemons] = useFetch(url)
 
   useEffect(() => {
-    if (typeSelect === 'All Pokemons' || typeSelect === '') {
-      getPokemons()
+    if (typeSelect === 'allPokemons' || typeSelect === '') {
+      getPokemons();
     } else {
-      getTypePokemons(typeSelect)
+      getTypePokemons(typeSelect);
     }
-    setCurrentPage(1)
-  }, [typeSelect])
+    setCurrentPage(1);
+  }, [typeSelect]);
+
+
 
   const inputName = useRef()
 
@@ -54,7 +56,6 @@ const PokedexPage = () => {
   let imageUrl
 
   if (typeof process !== "undefined") {
-    // Código solo para el servidor (Node.js)
     imageUrl = process.env.REACT_APP_IMAGE_URL 
   }
 
