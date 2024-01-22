@@ -48,14 +48,14 @@ const PokedexPage = () => {
   const handleItemsPerPageChange = (event) => {
     const newItemsPerPage = parseInt(event.target.value, 10)
     setItemsPerPage(newItemsPerPage)
-    setCurrentPage(1) // Reiniciar a la primera página al cambiar la cantidad de cartas por página
+    setCurrentPage(1) 
   }
 
   let imageUrl
 
   if (typeof process !== "undefined") {
     // Código solo para el servidor (Node.js)
-    imageUrl = process.env.REACT_APP_IMAGE_URL // Reemplaza REACT_APP_IMAGE_URL con tu variable de entorno real
+    imageUrl = process.env.REACT_APP_IMAGE_URL 
   }
 
   return (

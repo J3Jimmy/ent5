@@ -17,7 +17,7 @@
   aspect-ratio: 2;
   position: relative;
   background: var(--header-gradient);
-  background-size: 100% 60%; /* Modificado para ocupar solo la mitad del alto */
+  background-size: 100% 60%; 
 }
 
 
@@ -39,6 +39,7 @@
   cursor: pointer;
   transition: transform 0.2s;
   display: inline-block; 
+  margin-top: 1em;
 }
 .id__button:hover {
   transform: scale(1.05);
