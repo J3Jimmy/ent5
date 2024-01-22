@@ -21,17 +21,35 @@
   margin: 0 auto;
   margin-top: 1em;
 }
-.center__page {
+.id__button {
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: #299ec5;
+  color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: inline-block; 
+}
+.id__button:hover {
+  transform: scale(1.05);
+}
+
+.name__ {
   text-align: center; 
 }
 .row__wh {
   display: flex; 
   justify-content: center; 
   align-items: center; 
+  margin: 0.5em;
+  font-size: 20px;
 }
 
 .weight__height {
   margin: 0 10px; 
+  
 }
 .TandH {
   display: flex;
@@ -43,18 +61,93 @@
   margin: 0 20px;
 }
 
-.types__habilities {
-  padding-top: 1em;
-  font-size: 1.2em;
-  color: #333;
+
+
+.t__h__ {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.t__h__ li {
+  font-size: 18px;
+  margin-right: 10px;
   margin-bottom: 10px;
+  padding: 10px 20px;
+  background-color: #008CBA;
+  color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.t__h__ li:hover {
+  transform: scale(1.1);
 }
 
-.t__h__ li {
+
+.stats__name {
+  float: left; 
+ width: 100%;
+ background-color: #cadfe6;
+margin-bottom: 1em;
+margin-top: 1em;
+}
+
+.h3__poke__page {
+  margin-bottom: 0.5em;
+  color: blueviolet;
+  font-size: 24px;
+}
+
+.pokecard__stats {
+  list-style: none; 
+  padding: 0; 
+}
+
+.pokecard__stats li {
+  margin-bottom: 10px; /
+}
+
+.pokecard__stats progress {
+  width: 100%; 
+  }
+
+.progress__poke__page {
+  padding-top: 2em;
+}
+
+
+
+.poke__page__moves {
   background-color: #f2f2f2;
-  padding: 1px 10px;
- 
-  border-radius: 5px;
-  display: inline-block;
-  margin-right: 5px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.poke__page__moves ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.poke__page__moves li {
+  font-size: 18px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background-color: #299ec5;
+  color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.poke__page__moves li:hover {
+  transform: scale(1.1);
 }

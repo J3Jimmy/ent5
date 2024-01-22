@@ -33,7 +33,7 @@ const PokeCard = ({ url }) => {
               <li className="pokecard__types__item" key={typeiInfo.type.url}>{typeiInfo.type.name}</li>
             ))}
           </ul>
-          <hr className="pokecard__hr" />
+          <hr />
           <ul className="pokecard__stats">
             {pokemon?.stats.map((statInfo) => (
               <li className="pokecard__stats__item" key={statInfo.stat.url}>
