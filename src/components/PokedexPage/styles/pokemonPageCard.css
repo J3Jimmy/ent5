@@ -12,6 +12,7 @@
   background-color: #f2f2f2;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 5em;
 }
 .poke__page__header {
   aspect-ratio: 2;
@@ -26,7 +27,6 @@
   height: auto;
   display: block;
   margin: 0 auto;
-  margin-top: 1em;
 }
 
 .id__button {
