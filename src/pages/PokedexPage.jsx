@@ -7,22 +7,23 @@ import "../components/PokedexPage/styles/PokedexPage.css"
 
 const PokedexPage = () => {
   const [inputValue, setInputValue] = useState('')
-  const [typeSelected, setTypeSelect] = useState('allPokemons')
+  const [typeSelect, setTypeSelect] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
-  const [postPerPage, setPostPerPage] = useState(10)
+  const [itemsPerPage, setItemsPerPage] = useState(12) // Estado para la cantidad de cartas por página
 
   const trainerName = useSelector(states => states.trainer)
 
-  const url = 'https://pokeapi.co/api/v2/pokemon?limit=10000&offset=0'
-  const [pokemons, getPokemons, getTypePokemon] = useFetch(url)
+  const url = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'
+  const [pokemons, getPokemons, getTypePokemons] = useFetch(url)
 
   useEffect(() => {
-    if (typeSelected === 'allPokemons') {
+    if (typeSelect === 'All Pokemons' || typeSelect === '') {
       getPokemons()
     } else {
-      getTypePokemon(typeSelected)
+      getTypePokemons(typeSelect)
     }
-  }, [typeSelected])
+    setCurrentPage(1)
+  }, [typeSelect])
 
   const inputName = useRef()
 
@@ -33,11 +34,28 @@ const PokedexPage = () => {
 
   const cbFilter = (pokeInfo) => pokeInfo.name.toLowerCase().includes(inputValue)
 
-  const indexOfLastPost = currentPage * postPerPage;
-  const indexOfFirstPost = indexOfLastPost - postPerPage;
-  const currentPosts = pokemons?.results.filter(cbFilter).slice(indexOfFirstPost, indexOfLastPost);
+  const startIdx = (currentPage - 1) * itemsPerPage
+  const endIdx = startIdx + itemsPerPage
+  const visiblePokemons = pokemons?.results?.filter(cbFilter)?.slice(startIdx, endIdx) || []
 
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const totalPages = Math.ceil(pokemons?.results?.filter(cbFilter)?.length / itemsPerPage) || 1
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage)
+  }
+
+  const handleItemsPerPageChange = (event) => {
+    const newItemsPerPage = parseInt(event.target.value, 10)
+    setItemsPerPage(newItemsPerPage)
+    setCurrentPage(1) // Reiniciar a la primera página al cambiar la cantidad de cartas por página
+  }
+
+  let imageUrl
+
+  if (typeof process !== "undefined") {
+    // Código solo para el servidor (Node.js)
+    imageUrl = process.env.REACT_APP_IMAGE_URL // Reemplaza REACT_APP_IMAGE_URL con tu variable de entorno real
+  }
 
   return (
     <div className="container__pokedex">
@@ -49,7 +67,7 @@ const PokedexPage = () => {
       <SelectType setTypeSelect={setTypeSelect} />
       <div className="pokemons__pokedex">
         {
-          currentPosts && currentPosts.map(pokeInfo => (
+          visiblePokemons && visiblePokemons.map(pokeInfo => (
             <PokeCard
               key={pokeInfo.url}
               url={pokeInfo.url}
@@ -57,14 +75,15 @@ const PokedexPage = () => {
           ))
         }
       </div>
-      <div className="pagination">
-        {pokemons && (
-          Array.from({ length: Math.ceil(pokemons.results.filter(cbFilter).length / postPerPage) }, (_, i) => (
-            <div key={i} onClick={() => paginate(i + 1)} className="page-number">
-              {i + 1}
-            </div>
-          ))
-        )}
+      <div>
+        <select onChange={handleItemsPerPageChange} value={itemsPerPage}>
+          <option value="12">12</option>
+          <option value="24">24</option>
+          <option value="36">36</option>
+        </select>
+        <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
+        <span>{currentPage} of {totalPages}</span>
+        <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>Next</button>
       </div>
     </div>
   )
