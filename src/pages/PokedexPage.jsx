@@ -5,6 +5,7 @@ import useFetch from "../hooks/useFetch"
 import SelectType from "../components/PokedexPage/SelectType"
 import "../components/PokedexPage/styles/PokedexPage.css"
 
+
 const PokedexPage = () => {
   const [inputValue, setInputValue] = useState('')
   const [typeSelect, setTypeSelect] = useState('')
@@ -64,7 +65,8 @@ const PokedexPage = () => {
         <input className="input__pokedex" ref={inputName} type="text" />
         <button className="button__pokedex">Search</button>
       </form>
-      <SelectType setTypeSelect={setTypeSelect} />
+      <SelectType setTypeSelect={setTypeSelect} className="select__type" />
+  
       <div className="pokemons__pokedex">
         {
           visiblePokemons && visiblePokemons.map(pokeInfo => (

@@ -14,6 +14,7 @@
   display: grid;
   grid-gap: 10px;
   padding: 2em;
+  cursor: pointer;
 }
 
 .pokemons__pokedex > * {
@@ -22,7 +23,7 @@
 
 .input__pokedex {
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #77cc7b;
   border-radius: 5px;
   margin-right: 10px;
   margin-bottom: 0.6em;
@@ -30,7 +31,7 @@
 }
 
 .button__pokedex {
-  background-color: #4CAF50;
+  background-color: #70be72;
   color: white;
   border: none;
   border-radius: 5px;
@@ -41,9 +42,32 @@
 }
 
 .button__pokedex:hover {
-  background-color: #45a049;
+  background-color: #5cb960;
 }
 
+.select-container {
+  margin-bottom: 20px;
+}
+
+.select-container select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #8ecf9c;
+  color: #333;
+  cursor: pointer;
+}
+
+.select-container select:hover {
+  border-color: #999;
+}
+
+.select-container select:focus {
+  outline: none;
+  border-color: #66afe9;
+  box-shadow: 0 0 5px #66afe9;
+}
 
 @media (min-width: 768px) {
   .pokemons__pokedex {
